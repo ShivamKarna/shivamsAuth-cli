@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-import fs from 'fs-extra';
-import path from 'path';
-import chalk from 'chalk';
-
-// --- Templates ---
+import fs from "fs-extra";
+import path from "path";
+import chalk from "chalk";
+// Basic version of code
 
 const userModel = `
 import { Schema, model, Document } from 'mongoose';
@@ -77,30 +76,43 @@ JWT_SECRET="super_secret_key_123"
 
 async function init() {
   const root = process.cwd();
-  const src = path.join(root, 'src');
+  const src = path.join(root, "src");
 
-  console.log(chalk.cyan.bold('\n ShivamsAuth: Initializing project...'));
+  console.log(chalk.cyan.bold("\n ShivamsAuth: Initializing project..."));
 
   try {
     // Create folders
-    await fs.ensureDir(path.join(src, 'models'));
-    await fs.ensureDir(path.join(src, 'controllers'));
-    await fs.ensureDir(path.join(src, 'routes'));
+    await fs.ensureDir(path.join(src, "models"));
+    await fs.ensureDir(path.join(src, "controllers"));
+    await fs.ensureDir(path.join(src, "routes"));
 
     // Write files
-    await fs.writeFileSync(path.join(src, 'models', 'User.ts'), userModel.trim());
-    await fs.writeFileSync(path.join(src, 'controllers', 'authController.ts'), authController.trim());
-    await fs.writeFileSync(path.join(src, 'routes', 'authRoutes.ts'), authRoutes.trim());
-    await fs.writeFileSync(path.join(root, '.env'), envFile.trim());
+    await fs.writeFileSync(
+      path.join(src, "models", "User.ts"),
+      userModel.trim()
+    );
+    await fs.writeFileSync(
+      path.join(src, "controllers", "authController.ts"),
+      authController.trim()
+    );
+    await fs.writeFileSync(
+      path.join(src, "routes", "authRoutes.ts"),
+      authRoutes.trim()
+    );
+    await fs.writeFileSync(path.join(root, ".env"), envFile.trim());
 
-    console.log(chalk.green('\nSuccess! Structure created.'));
-    console.log(chalk.yellow('\nNext steps:'));
-    console.log('1. Run: ' + chalk.white('npm install mongoose jsonwebtoken bcryptjs'));
-    console.log('2. Run: ' + chalk.white('npm install -D @types/jsonwebtoken @types/bcryptjs'));
-    console.log('3. Add your MongoDB URI to ' + chalk.cyan('.env'));
-    
+    console.log(chalk.green("\nSuccess! Structure created."));
+    console.log(chalk.yellow("\nNext steps:"));
+    console.log(
+      "1. Run: " + chalk.white("npm install mongoose jsonwebtoken bcryptjs")
+    );
+    console.log(
+      "2. Run: " +
+        chalk.white("npm install -D @types/jsonwebtoken @types/bcryptjs")
+    );
+    console.log("3. Add your MongoDB URI to " + chalk.cyan(".env"));
   } catch (err) {
-    console.error(chalk.red('Error:'), err);
+    console.error(chalk.red("Error:"), err);
   }
 }
 
