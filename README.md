@@ -2,6 +2,8 @@
 
 ![shivamsauth-cli](./public/images/shivamsAuthCli.png)
 
+ > **Linkedin:** https://www.linkedin.com/posts/shivamkarndev_dev-what-keynote-activity-7408146082595278848-ZPZC
+
 A basic CLI tool to automate the boring parts of setting up Express authentication.
 
 > **Project Status:** This is a "construction" phase prototype. It is currently being tested locally and is not yet published to npm.
