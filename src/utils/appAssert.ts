@@ -6,7 +6,7 @@ export type AppAssertParams = <T>(
   options: {
     statusCode: httpStatusCode,
     message: string,
-    errorCode: AppErrorCode
+    errorCode?: AppErrorCode
   }
 ) => asserts condition is NonNullable<T>;
 
