@@ -1,8 +1,8 @@
-import  { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 import { thirtyDaysFromNow } from "../utils/date.js";
 
 export interface sessionDocument extends Document {
-  userId: Schema.Types.ObjectId;
+  userId: Types.ObjectId;
   userAgent?: string;
   createdAt: Date;
   expiresAt: Date;
@@ -20,7 +20,7 @@ const sessionSchema = new Schema({
   createdAt: {
     type: Date,
     required: true,
-    Default: Date.now,
+    default: Date.now,
   },
   expiresAt: {
     type: Date,

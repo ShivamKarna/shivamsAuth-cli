@@ -15,7 +15,7 @@ export const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: [true, "Username is requiredj"],
+      required: [true, "Username is required"],
     },
     email: {
       type: String,
@@ -49,4 +49,4 @@ userSchema.methods.omitPassword = function () {
   return user;
 };
 
-const User = model<IUser>("User", userSchema);
+export const User = model<IUser>("User", userSchema);
