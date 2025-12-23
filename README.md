@@ -1,8 +1,8 @@
 # shivamsauth-cli
 
-![shivamsauth-cli](./public/images/shivamsAuthCli.png)
+![shivamsauth-cli](./public/images/shivamsAuthPro.png)
 
-> **Linkedin:** https://www.linkedin.com/posts/shivamkarndev_dev-what-keynote-activity-7408146082595278848-ZPZC
+> **Linkedin:** https://www.linkedin.com/posts/shivamkarndev_christmasgift-december25th-countdown-activity-7409267844993118208-nMzk
 
 A complete authentication system for Express applications with TypeScript, featuring JWT-based authentication, session management, refresh token rotation, and comprehensive security features.
 
@@ -10,7 +10,7 @@ A complete authentication system for Express applications with TypeScript, featu
 
 ## Architecture Overview
 
-![Services Flow](./public/images/shivamsAuthPro.png)
+![Services Flow](./public/images/shivams-auth-cli-Flow.png)
 
 The authentication system follows a clean, modular architecture with complete separation of concerns:
 
