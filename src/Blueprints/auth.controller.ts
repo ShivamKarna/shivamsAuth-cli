@@ -9,17 +9,22 @@ import {
 } from "./auth.services.js";
 import { CREATED, OK, UNAUTHORIZED } from "../utils/http.js";
 import { appAssert } from "../utils/appAssert.js";
+import { getSessionDescription } from "../utils/userAgent.js";
 
 // Register Controller
 export const registerController = async (req: Request, res: Response) => {
   const { email, password, username } = req.body;
   const userAgent = req.headers["user-agent"];
+  const ipAddress =
+    (req.headers["x-forwarded-for"] as string)?.split(",")[0] ||
+    req.socket.remoteAddress;
 
   const { user, accessToken, refreshToken } = await createUser({
     email,
     password,
     username,
     userAgent,
+    ipAddress,
   });
 
   // Set refresh token in httpOnly cookie
@@ -41,11 +46,15 @@ export const registerController = async (req: Request, res: Response) => {
 export const loginController = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const userAgent = req.headers["user-agent"];
+  const ipAddress =
+    (req.headers["x-forwarded-for"] as string)?.split(",")[0] ||
+    req.socket.remoteAddress;
 
   const { user, accessToken, refreshToken } = await loginUser({
     email,
     password,
     userAgent,
+    ipAddress,
   });
 
   // Set refresh token in httpOnly cookie
@@ -119,8 +128,25 @@ export const getSessionsController = async (req: Request, res: Response) => {
 
   const sessions = await getUserSessions(userId);
 
+  // Format sessions with readable descriptions
+  const formattedSessions = sessions.map((session) => ({
+    _id: session._id,
+    description: getSessionDescription({
+      browser: session.browser,
+      os: session.os,
+      device: session.device,
+    }),
+    browser: session.browser,
+    os: session.os,
+    device: session.device,
+    ipAddress: session.ipAddress,
+    createdAt: session.createdAt,
+    expiresAt: session.expiresAt,
+    isCurrent: session._id.toString() === req.session?.sessionId,
+  }));
+
   return res.status(OK).json({
-    sessions,
+    sessions: formattedSessions,
   });
 };
 

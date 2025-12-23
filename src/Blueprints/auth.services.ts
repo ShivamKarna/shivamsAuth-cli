@@ -3,6 +3,7 @@ import { SessionModel } from "./session.model.js";
 import type { sessionDocument } from "./session.model.js";
 import { thirtyDaysFromNow } from "../utils/date.js";
 import { appAssert } from "../utils/appAssert.js";
+import { parseUserAgent } from "../utils/userAgent.js";
 import {
   signToken,
   RefreshTokenOptions,
@@ -24,12 +25,14 @@ export const createUserSchema = z.object({
   password: z.string().min(7).max(200),
   username: z.string().min(3).max(50),
   userAgent: z.string().optional(),
+  ipAddress: z.string().optional(),
 });
 
 export const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1),
   userAgent: z.string().optional(),
+  ipAddress: z.string().optional(),
 });
 
 export type createUserParams = z.infer<typeof createUserSchema>;
@@ -56,10 +59,15 @@ export const createUser = async (data: createUserParams) => {
     message: "Failed to create user",
   });
 
+  // Parse user agent
+  const parsedUA = parseUserAgent(data.userAgent);
+
   // Create session
   const session = await SessionModel.create({
     userId: user._id,
-    userAgent: data.userAgent, //TODO: to add the parser and present the user agents iin  a beautiful way
+    userAgent: data.userAgent,
+    ipAddress: data.ipAddress,
+    ...parsedUA,
   });
 
   appAssert(session, {
@@ -107,10 +115,15 @@ export const loginUser = async (data: loginParams) => {
     message: "Invalid email or password",
   });
 
+  // Parse user agent
+  const parsedUA = parseUserAgent(data.userAgent);
+
   // Create session
   const session = await SessionModel.create({
     userId: user._id,
-    userAgent: data.userAgent, //TODO: use the session presenting package for better view
+    userAgent: data.userAgent,
+    ipAddress: data.ipAddress,
+    ...parsedUA,
   });
 
   appAssert(session, {
