@@ -10,7 +10,7 @@ A complete authentication system for Express applications with TypeScript, featu
 
 ## Architecture Overview
 
-![Services Flow](./public/images/servicesFlow.png)
+![Services Flow](./public/images/shivamsAuthPro.png)
 
 The authentication system follows a clean, modular architecture with complete separation of concerns:
 
