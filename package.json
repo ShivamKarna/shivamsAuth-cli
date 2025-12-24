@@ -1,6 +1,7 @@
 {
   "name": "shivamsauth",
   "version": "1.0.0",
+  "description": "A complete authentication system CLI for Express applications with TypeScript, featuring JWT-based authentication, session management, and comprehensive security features",
   "type": "module",
   "main": "dist/brain.js",
   "bin": {
@@ -8,11 +9,44 @@
   },
   "files": [
     "dist",
-    "src"
+    "src/Blueprints",
+    "src/middleware",
+    "src/utils",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
-    "start": "node dist/brain.js"
+    "start": "node dist/brain.js",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "authentication",
+    "auth",
+    "jwt",
+    "express",
+    "typescript",
+    "session-management",
+    "refresh-token",
+    "cli",
+    "code-generator",
+    "boilerplate",
+    "mongoose",
+    "security"
+  ],
+  "author": "Shivam Karn <shivamkarn767@gmail.com> (https://www.linkedin.com/in/shivamkarndev)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShivamKarna/shivamsAuth-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShivamKarna/shivamsAuth-cli/issues"
+  },
+  "homepage": "https://github.com/ShivamKarna/shivamsAuth-cli#readme",
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@types/bcrypt": "^6.0.0",

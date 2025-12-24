@@ -1,0 +1,54 @@
+# Source files (only built dist/ is needed)
+src/
+!src/Blueprints/
+!src/middleware/
+!src/utils/
+
+# Development files
+*.ts
+!*.d.ts
+tsconfig.json
+.vscode/
+.idea/
+
+# Testing
+test/
+tests/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Documentation
+docs/
+.github/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.tsbuildinfo
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Images (optional - remove if you want images in package)
+public/

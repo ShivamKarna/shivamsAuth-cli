@@ -1,12 +1,56 @@
-# shivamsauth-cli
+# shivamsauth
 
 ![shivamsauth-cli](./public/images/shivamsAuthPro.png)
 
-> **Linkedin:** https://www.linkedin.com/posts/shivamkarndev_christmasgift-december25th-countdown-activity-7409267844993118208-nMzk
+> **LinkedIn:** https://www.linkedin.com/posts/shivamkarndev_christmasgift-december25th-countdown-activity-7409267844993118208-nMzk
 
-A complete authentication system for Express applications with TypeScript, featuring JWT-based authentication, session management, refresh token rotation, and comprehensive security features.
+A complete authentication system CLI for Express applications with TypeScript, featuring JWT-based authentication, session management, refresh token rotation, and comprehensive security features.
 
-> **Project Status:** Core authentication system is fully implemented with services, controllers, routes, and middleware. Currently being tested locally before npm release.
+## Installation
+
+```bash
+npm install -g shivamsauth
+```
+
+Or use with npx (no installation required):
+
+```bash
+npx shivamsauth
+```
+
+## Quick Start
+
+1. Navigate to your project directory:
+
+```bash
+cd your-express-project
+```
+
+2. Run the CLI:
+
+```bash
+shivamsauth
+```
+
+3. The CLI will generate a complete authentication system with:
+
+   - Models (User, Session)
+   - Controllers (auth operations)
+   - Services (business logic)
+   - Routes (auth endpoints)
+   - Middleware (JWT authentication)
+   - Utils (JWT, bcrypt, validation)
+
+4. Install the required dependencies:
+
+```bash
+npm install express mongoose bcrypt jsonwebtoken zod ua-parser-js
+npm install -D @types/express @types/bcrypt @types/jsonwebtoken @types/mongoose
+```
+
+5. Configure your `.env` file with the generated template
+
+6. Start building your app with production-ready authentication!
 
 ## Architecture Overview
 
@@ -349,24 +393,6 @@ src/
 └── app.example.ts              # Example Express setup
 ```
 
-## Future Roadmap
-
-- [x] Complete authentication services layer
-- [x] Implement controllers with cookie management
-- [x] Create routes with validation
-- [x] Add authentication middleware
-- [x] Refresh token rotation
-- [x] Session management (multi-device support)
-- [ ] Add auto-installation of dependencies
-- [ ] CLI commands for initialization
-- [ ] Add support for different folder structures
-- [ ] Add email verification flow
-- [ ] Add password reset functionality
-- [ ] Add OAuth integration options
-- [ ] Add rate limiting utilities
-- [ ] Add two-factor authentication (2FA)
-- [ ] Official npm release
-
 ## Development Status
 
 **Completed:**
@@ -381,12 +407,6 @@ src/
 - Error handling utilities
 - Type-safe throughout (no `any` types)
 
-**In Progress:**
-
-- Local testing and refinement
-- CLI tool for easy project setup
-- Documentation and examples
-
 ## Contributing
 
 This project is in active development. Contributions, issues, and feature requests are welcome!
@@ -394,7 +414,3 @@ This project is in active development. Contributions, issues, and feature reques
 ## License
 
 MIT
-
-## Disclaimer
-
-This project is production-ready for authentication logic but is still being packaged as a CLI tool. The core authentication system is fully implemented and tested. Use it for learning and real projects while the CLI distribution is being finalized.
